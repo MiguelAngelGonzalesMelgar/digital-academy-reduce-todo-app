@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+## Exercise 1
+- Expensive Calculation with **useMemo**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Description:
+ You’re building a character counter tool for writers. The tool calculates the total character count and estimated reading time for large text inputs. The calculation should only re-run when the input text changes — not on every keystroke or render.
 
-Currently, two official plugins are available:
+Goals:
+-- Use useMemo to memoize expensive string calculations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-- Update state with useState.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Example Metrics to Compute:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Total characters
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Words per minute estimate (e.g., 200 WPM)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Average word length
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+*Bonus*:
+
+- Add a textarea resize feature without re-rendering the metrics.
+
+
+## Exercise 2
+Description:
+  You’re tasked with creating a form that manages its inputs using useReducer. The form includes multiple fields like name, email, and a newsletter checkbox.
+
+Goals:
+-- Use useReducer to manage form field states and updates.
+
+-- Validate input on submit and show basic error messages.
+
+*Bonus Challenge*:
+
+- Include a reset button using a RESET_FORM action.
+
+- Use useMemo to compute if the form is valid before enabling the submit button.
+
+## Exercise 3
+
+Description:
+  Create a modal that is only loaded when the user clicks “Open Modal”. Use React.lazy and Suspense to defer loading.
+
+Goals:
+
+-- Use React.lazy to import the modal.
+
+-- Wrap it in Suspense with a loading fallback.
+
+-- Use local state (useState) to show/hide the modal.
+
