@@ -103,3 +103,9 @@ article div button {
 article div button:hover {
   background-color: #da190b;
 }
+
+.error-message {
+  color: red;
+  font-style: italic;
+  margin-bottom: 5px;
+}
