@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useMemo, useReducer, useState } from "react";
 import "../App.css";
 
 interface todoItem {
@@ -25,7 +25,7 @@ type FormAction =
 const formReducer = (state: FormState, action: FormAction): FormState => {
   switch (action.type) {
     case "UPDATE_FIELD":
-      return {...state, inputValue: action.payload.value, error: null};
+      return {...state, inputValue: action.payload.value};
     case "SET_ERROR":
       return {...state, error: action.payload.message };
     case "RESET_FORM":
@@ -35,12 +35,13 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
   }
 }
 
-const Todo = () => {
+const TodoReduce = () => {
   const [formState, dispatch] = useReducer(formReducer, initialFormState)
   const [todoList, setTodoList] = useState<todoItem[]>([]);
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({type: "UPDATE_FIELD", payload: {value: event.target.value}})
+    const value = event.target.value;
+    dispatch({type: "UPDATE_FIELD", payload: {value: value}})
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -48,6 +49,7 @@ const Todo = () => {
 
     if (formState.inputValue.trim() === "") {
       dispatch({type: "SET_ERROR", payload: {message: "Can't add an empty todo."}})
+      return;
     }
 
     setTodoList([
@@ -72,7 +74,10 @@ const Todo = () => {
     dispatch({type: "RESET_FORM"});
   }
 
-
+  // const FormIsValid = useMemo(() => {
+  //   const isValid = formState.inputValue.trim() !== "";
+  //   return isValid;
+  // }, [formState.inputValue])
 
   return (
     <section>
@@ -88,14 +93,19 @@ const Todo = () => {
         onChange={handleOnChange}
         />
 
-        {formState.error && (
-          <p className="error-message">{formState.error}</p>
-        )}
 
-        <button type="submit">Add Todo</button>
-        <button type="button" onClick={handleReset}>Reset</button>
-
+        <button type="submit"
+        // disabled={!FormIsValid}
+        >
+          Add Todo
+        </button>
+        <button type="button" onClick={handleReset}>
+          Reset
+        </button>
       </form>
+          {formState.error && (
+            <p className="error-message">{formState.error}</p>
+          )}
       <article>
         <h3>Todo list</h3>    
         {todoList.map((todoItem) => {
@@ -112,4 +122,4 @@ const Todo = () => {
   )
 }
 
-export default Todo;
+export default TodoReduce;

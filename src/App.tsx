@@ -1,5 +1,6 @@
 import './App.css'
 import Todo from './components/Todo'
+import TodoReduce from './components/TodoReduce'
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <main>
     <h1>Reduce todo app</h1>
     <Todo/>
+    <TodoReduce/>
     </main>
   )
 }
