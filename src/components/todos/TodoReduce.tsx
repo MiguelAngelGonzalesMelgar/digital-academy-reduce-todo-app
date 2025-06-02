@@ -1,5 +1,5 @@
 import { useMemo, useReducer, useState } from "react";
-import "../App.css";
+import "../../App.css"
 
 interface todoItem {
   todo: string;
@@ -81,7 +81,7 @@ const TodoReduce = () => {
 
   return (
     <section>
-      <h2>TODO's:</h2>
+      <h2>TODO's con reduce:</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="todos">Add new Todo:</label>
         <input 

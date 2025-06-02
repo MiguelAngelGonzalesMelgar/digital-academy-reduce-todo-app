@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../App.css";
+import "../../App.css"
 
 interface todoList {
   todo: string;
@@ -34,9 +34,12 @@ const Todo = () => {
     setTodoList(updateTodoList)
   }
 
+  const formIsValid = inputValue.trim() !== "";
+
+
   return (
     <section>
-      <h2>TODO's:</h2>
+      <h2>TODO's sin reduce:</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="todos">Add new Todo:</label>
         <input 
@@ -47,7 +50,11 @@ const Todo = () => {
         value={inputValue}
         onChange={handleOnChange}
         />
-        <button type="submit">Add Todo</button>
+        <button type="submit"
+        disabled={!formIsValid}
+        >
+          Add Todo
+        </button>
       </form>
       <article>
         <h3>Todo list</h3>    

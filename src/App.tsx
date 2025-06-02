@@ -1,6 +1,6 @@
 import './App.css'
-import Todo from './components/Todo'
-import TodoReduce from './components/TodoReduce'
+import Todo from './components/todos/Todo'
+import TodoReduce from './components/todos/TodoReduce'
 
 function App() {
 
