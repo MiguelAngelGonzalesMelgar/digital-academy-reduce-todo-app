@@ -3,6 +3,8 @@ import './App.css'
 const LazyDialog = lazy(() => import ("./components/lazyLoading/MyDialog"))
 import Todo from './components/todos/Todo'
 import TodoReduce from './components/todos/TodoReduce'
+import CharacterCounter from './components/useMemo/CharacterCounter'
+import NoMemoCount from './components/useMemo/NoMemoCount'
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,6 +28,8 @@ function App() {
       />
       </Suspense>
     )}
+    <CharacterCounter/>
+    <NoMemoCount/>
     </main>
   )
 }
